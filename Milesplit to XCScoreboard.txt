@@ -1,0 +1,73 @@
+Milesplit to XCScoreboard
+
+1b) Download entries from milesplit meet manager.
+	1b) Open csv file that was downloaded.
+2a) Need to remove the following:
+Event 
+Distance
+TeamId
+Seed
+Grade
+City
+State
+Country
+Birthdate
+SeedMeet
+SeedDate
+Note
+Registrant
+ContactName
+ContactEmail
+AthleteID
+DateCreated
+DateUpdated
+
+2b) Need to convert:
+LName and FNAME to Racer Name which will be outputted in the following format LName, FName
+Gender will be output as Group 
+Team will be output as Team Name
+add a new Column called Bib# which will create the bibs in numeric order starting with 1
+
+
+import time
+import os
+from ftplib import FTP
+
+def upload_to_server(file_path, server, username, password, remote_path):
+    with FTP(server) as ftp:
+        ftp.login(user=username, passwd=password)
+        with open(file_path, 'rb') as file:
+            ftp.storbinary(f'STOR {remote_path}', file)
+    print(f"Uploaded {file_path} to {server}/{remote_path}")
+
+def watch_file(file_path, server, username, password, remote_path):
+    last_modified_time = None
+    while True:
+        if os.path.exists(file_path):
+            modified_time = os.path.getmtime(file_path)
+            if modified_time != last_modified_time:
+                print(f"Detected changes in {file_path}. Uploading...")
+                upload_to_server(file_path, server, username, password, remote_path)
+                last_modified_time = modified_time
+        time.sleep(5)  # Check for updates every 5 seconds
+
+# Example Usage
+watch_file(
+    file_path="C:/Users/jdeno/Desktop/xc_score_trial-Individual-Male.html",
+    server="ftp.yourdomain.com",
+    username="your_ftp_username",
+    password="your_ftp_password",
+    remote_path="public_html/results.html"
+)
+
+
+
+
+<script>
+  setInterval(() => {
+    fetch(window.location.href, { cache: "reload" })
+      .then(response => {
+        if (response.ok) location.reload();
+      });
+  }, 10000); // Check every 10 seconds
+</script>
