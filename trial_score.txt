@@ -1,0 +1,20 @@
+================================================================================
+  Pl Athlete                 Yr   #  Team                      Score       Time 
+================================================================================
+    1 Elon Musk              12 1007 Makeup                         1   15:10.10 
+    2 Micky Mouse             9 1005 Makeup                         2   15:10.50 
+    3 Goofy Dogg             10 1003 Makeup                         3   15:10.70 
+    4 Snoop Dogg             12 1002 Makeup                         4   15:10.78 
+    5 Colson Griffin         11 1004 Makeup                         5   15:11.12 
+    6 Christian Lakes        10 1001 Noname                         6   15:12.00 
+    7 Travis Garvey           9 1000 Noname                         7   15:14.00 
+    8 Tyler Harding           9 1006 Makeup                             15:17.65 
+    9 Benn Page              11 1008 Makeup                             15:18.50 
+   10 Andrew Dragen          11 1010 Noname                        10   15:19.05 
+   11 Nehemiah Shannon       12 1011 Noname                        11   15:20.55 
+   12 Larry Ellison          12 1009 Noname                        12   15:22.65 
+
+Rank Team Score Total 1 2 3 4 5 6 7 
+================================================================================
+ 1 Makeup               15   75:53    1 2 3 4 5 8 9
+ 2 Noname               46   76:28    6 7 10 11 12
