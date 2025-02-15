@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Detector with Stopwatch and Video Recording</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            left: 10px;
+            top: 100px;
+        }
+        canvas {
+            border: 2px solid black;
+            width: 800px;
+            height: 600px;
+        }
+        #loggedTimes {
+            margin-top: 20px;
+            width: 300px;
+            background: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            max-height: 300px;
+            overflow-y: auto;
+            position: absolute;
+            right: 10px;
+            top: 100px;
+            text-align: right;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+     .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 50%;
+        border-radius: 10px;
+    }
+    .close {
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="top-left">
+        <div id="status">Detecting noise level...</div>
+        <label for="colorPicker">Stopwatch Color:</label>
+        <input type="color" id="colorPicker" value="#ff0000">
+    </div>
+
+    <div class="controls">
+        <button id="startButton">Start Stopwatch</button>
+        <button id="resetButton">Reset Stopwatch</button>
+        <button id="recordButton">Record Video</button>
+        <button id="stopRecordingButton" disabled>Stop Recording & Download</button>
+        <button id="directionsButton">Directions</button>
+    </div>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <div id="loggedTimes">
+        <h3>Logged Times</h3>
+        <ul id="timeList"></ul>
+    </div>
+
+   <div id="directionsModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Directions</h2>
+        <p>Use the following buttons for the stopwatch:</p>
+        <ul>
+            <li><strong>Start Stopwatch:</strong> Starts the timer manually.</li>
+            <li><strong>Reset Stopwatch:</strong> Resets the stopwatch to 00:00:00.000.</li>
+            <li><strong>Record Video:</strong> Starts recording the video along with the stopwatch.</li>
+            <li><strong>Stop Recording & Download:</strong> Stops the recording and saves the video as an MP4.</li>
+            <li><strong>CTRL + SHIFT:</strong> Exports logged times as a CSV file.</li>
+            <li><strong>Spacebar:</strong> Logs the current stopwatch time and adds a bookmark to the video.</li>
+        </ul>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
